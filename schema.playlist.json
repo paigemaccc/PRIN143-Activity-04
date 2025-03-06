@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-07/schema#",
+  "$id" : "https://example.com/schema.playlist.json",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 20
+    },
+    "artist": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 20
+    },
+    "album": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 20
+    },
+    "releaseYear": {
+      "type": "integer",
+      "minimum": 1990,
+      "maximum": 2025
+    },
+    "duration": {
+      "type": "object",
+      "properties": {
+        "minutes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "seconds": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 59
+        }
+      },
+      "required": ["minutes", "seconds"]
+    },
+    "statistics": {
+      "type": "object",
+      "properties": {
+        "plays": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "likes": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": ["plays", "likes"]
+    },
+    "playlistItems": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "platform": {
+      "type": "string",
+      "enum": ["Spotify"]
+    },
+    "inDevice": {
+      "type": ["boolean", "null"]
+    }
+  },
+  "required": [
+    "title",
+    "artist",
+    "album",
+    "releaseYear",
+    "duration",
+    "statistics",
+    "playlistItems",
+    "platform"
+  ]
+}
